@@ -20,6 +20,17 @@ def get_db():
         yield db
     finally:
         db.close()
+@app.get("/quemsomos")
+def homequemsomos(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("quem_somos.html", {"request": request})
+
+@app.get("/ondecomprar")
+def homeondecomprar(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("onde_comprar.html", {"request": request})
+
+@app.get("/licenca")
+def homelicença(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("licenca.html", {"request": request})
 
 @app.get("/")
 def home(request: Request) -> HTMLResponse:
