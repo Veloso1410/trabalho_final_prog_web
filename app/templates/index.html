@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Armas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpapers.com/images/hd/camo-speckled-army-print-4jwhifv2ng29aoqj.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #000;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.5em;
+            letter-spacing: 2px;
+        }
+        .container {
+            width: 80%;
+            margin: 70px auto 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .weapon-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .weapon-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        .weapon-name {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .weapon-name-text {
+            flex: 1; /* Ocupa todo o espaço disponível */
+            overflow: hidden; /* Evita que o texto exceda o espaço */
+            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+            text-overflow: ellipsis; /* Adiciona reticências quando o texto é cortado */
+        }
+        .expand-arrow {
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .weapon-details {
+            padding-top: 10px;
+        }
+        .weapon-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        .weapon-details li {
+            margin-bottom: 5px;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end; /* Botões de ação na direita */
+        }
+        .actions a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+        .actions .remove {
+            background-color: #dc3545;
+        }
+        .actions .remove:hover {
+            background-color: #c82333;
+        }
+        .add-weapon {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            text-decoration: none;
+            color: #fff;
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+        .add-weapon:hover {
+            background-color: #218838;
+        }
+        .expand-arrow.rotate-down {
+            transform: rotate(90deg);
+        }
+    </style>
+    <script>
+        function fetchWeapons() {
+            fetch('/weapons')
+                .then(response => response.json())
+                .then(weapons => {
+                    const list = document.querySelector('.weapon-list');
+                    list.innerHTML = '';
+                    weapons.forEach(weapon => {
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('weapon-item');
+
+                        listItem.innerHTML = `
+                            <div class="weapon-name">
+                                <div class="weapon-name-text">
+                                    <strong>${weapon.modelo}</strong>, <strong>${weapon.numero_de_serie}</strong>
+                                </div>
+                                <span class="expand-arrow">▼</span>
+                            </div>
+                            <div class="weapon-details">
+                                <ul>
+                                    <li><strong>Número de Série:</strong> ${weapon.numero_de_serie}</li>
+                                    <li><strong>Classe:</strong> ${weapon.classe}</li>
+                                    <li><strong>Calibre:</strong> ${weapon.calibre}</li>
+                                    <li><strong>Modelo:</strong> ${weapon.modelo}</li>
+                                    <li><strong>Marca:</strong> ${weapon.marca}</li>
+                                    <li><strong>Capacidade:</strong> ${weapon.capacidade}</li>
+                                </ul>
+                            </div>
+                            <div class="actions">
+                                <a href="/editar/${weapon.numero_de_serie}">Editar</a>
+                                <a href="#" class="remove" onclick="confirmDeletion(event, '/weapons/${weapon.numero_de_serie}')">Remover</a>
+                            </div>
+                        `;
+
+                        list.appendChild(listItem);
+
+                        const expandArrow = listItem.querySelector('.expand-arrow');
+                        const weaponDetails = listItem.querySelector('.weapon-details');
+
+                        // Iniciar mostrando os detalhes
+                        weaponDetails.style.display = 'block';
+                        expandArrow.classList.add('rotate-down');
+
+                        expandArrow.addEventListener('click', () => {
+                            listItem.classList.toggle('expanded');
+                            weaponDetails.style.display = weaponDetails.style.display === 'none' ? 'block' : 'none';
+                            expandArrow.classList.toggle('rotate-down');
+                        });
+                    });
+                })
+                .catch(error => console.error('Error fetching weapons:', error));
+        }
+
+        function confirmDeletion(event, url) {
+            event.preventDefault();
+            if (confirm("Confirmar exclusão de item?")) {
+                fetch(url, { method: 'DELETE' })
+                    .then(() => fetchWeapons())
+                    .catch(error => console.error('Error deleting weapon:', error));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchWeapons);
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <h1>CATÁLOGO DE ARMAS</h1>
+    </div>
+    <div class="container">
+        <h2>Lista de Armas</h2>
+        <ul class="weapon-list"></ul>
+        <a href="/adicionar" method="post" class="add-weapon">Adicionar Nova Arma</a>
+    </div>
+</body>
+</html>

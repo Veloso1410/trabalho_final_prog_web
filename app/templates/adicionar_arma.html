@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Nova Arma</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpapers.com/images/hd/camo-speckled-army-print-4jwhifv2ng29aoqj.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #000;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.5em;
+            letter-spacing: 2px;
+        }
+        .container {
+            width: 80%;
+            margin: 70px auto 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>CATÁLOGO DE ARMAS - Adicionar Nova Arma</h1>
+    </div>
+    <div class="container">
+        <h2>Adicionar Nova Arma</h2>
+        <form method='post' action="/adicionar">
+            <div class="form-group">
+                <label for="numero_de_serie">Número de Série:</label>
+                <input type="number" id="numero_de_serie" name="numero_de_serie" required>
+            </div>
+            <div class="form-group">
+                <label for="classe">Classe:</label>
+                <select id="classe" name="classe" required>
+                    <option value="">Selecione...</option>
+                    <option value="Rifle">Rifle</option>
+                    <option value="Pistola">Pistola</option>
+                    <option value="Revólver">Revólver</option>
+                    <option value="Espingarda">Espingarda</option>
+                    <option value="Carabina">Carabina</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="calibre">Calibre:</label>
+                <select id="calibre" name="calibre" required>
+                    <option value="">Selecione...</option>
+                    <option value=".22">.22</option>
+                    <option value=".357">.357</option>
+                    <option value=".38spl">.38spl</option>
+                    <option value=".38acp">.38acp</option>
+                    <option value=".40">.40</option>
+                    <option value="12ga">12ga</option>
+                    <option value="5,56nato">5,56nato</option>
+                    <option value="9mm">9mm</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" name="modelo" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <select id="marca" name="marca" required>
+                    <option value="">Selecione...</option>
+                    <option value="Glock">Glock</option>
+                    <option value="Taurus">Taurus</option>
+                    <option value="CZ">CZ</option>
+                    <option value="Beretta">Beretta</option>
+                    <option value="Rossi">Rossi</option>
+                    <option value="Imbel">Imbel</option>
+                    <option value="S&W">S&W</option>
+                    <option value="Winchester">Winchester</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="capacidade">Capacidade:</label>
+                <input type="number" id="capacidade" name="capacidade" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Adicionar Arma</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

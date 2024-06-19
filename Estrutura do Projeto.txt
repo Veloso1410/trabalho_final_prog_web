@@ -1,0 +1,13 @@
+my_weapon_catalog
+├── app
+│   ├── __init__.py
+│   ├── crud.py
+│   ├── database.py
+│   ├── main.py
+│   ├── models.py
+│   ├── schemas.py
+├── index.html
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+└── Procfile
