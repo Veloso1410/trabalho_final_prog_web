@@ -7,9 +7,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url('https://wallpapers.com/images/hd/camo-speckled-army-print-4jwhifv2ng29aoqj.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
+            background-color: #1c1c1c;
+            color: #ffffff;
             margin: 0;
             padding: 0;
         }
@@ -17,21 +16,25 @@
             width: 100%;
             background-color: #000;
             padding: 15px 0;
-            text-align: center;
+            display: flex;
+            align-items: center;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         .navbar h1 {
             margin: 0;
             color: #fff;
             font-size: 1.5em;
             letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
         }
         .container {
             width: 80%;
-            margin: 70px auto 0;
+            margin: 100px auto 0;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -50,6 +53,7 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
+            color: #333;
         }
         .form-group input,
         .form-group select {
@@ -58,19 +62,32 @@
             font-size: 1em;
             border: 1px solid #ccc;
             border-radius: 5px;
+            color: #333;
+        }
+        .form-group .button-group {
+            display: flex;
+            justify-content: space-between;
         }
         .form-group button {
             padding: 10px 20px;
             font-size: 1em;
-            background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .form-group button:hover {
+        .form-group button.submit {
+            background-color: #007bff;
+        }
+        .form-group button.submit:hover {
             background-color: #0056b3;
+        }
+        .form-group button.cancel {
+            background-color: #dc3545;
+        }
+        .form-group button.cancel:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -100,14 +117,14 @@
                 <label for="calibre">Calibre:</label>
                 <select id="calibre" name="calibre" required>
                     <option value="">Selecione...</option>
-                    <option value=".22">.22</option>
-                    <option value=".357">.357</option>
-                    <option value=".38spl">.38spl</option>
-                    <option value=".38acp">.38acp</option>
-                    <option value=".40">.40</option>
-                    <option value="12ga">12ga</option>
-                    <option value="5,56nato">5,56nato</option>
-                    <option value="9mm">9mm</option>
+                    <option value=".22" {% if weapon.calibre == ".22" %} selected {% endif %}>.22</option>
+                    <option value=".357" {% if weapon.calibre == ".357" %} selected {% endif %}>.357</option>
+                    <option value=".38spl" {% if weapon.calibre == ".38spl" %} selected {% endif %}>.38spl</option>
+                    <option value=".38acp" {% if weapon.calibre == ".38acp" %} selected {% endif %}>.38acp</option>
+                    <option value=".40" {% if weapon.calibre == ".40" %} selected {% endif %}>.40</option>
+                    <option value="12ga" {% if weapon.calibre == "12ga" %} selected {% endif %}>12ga</option>
+                    <option value="5,56nato" {% if weapon.calibre == "5,56nato" %} selected {% endif %}>5,56nato</option>
+                    <option value="9mm" {% if weapon.calibre == "9mm" %} selected {% endif %}>9mm</option>
                 </select>
             </div>
             <div class="form-group">
@@ -118,22 +135,23 @@
                 <label for="marca">Marca:</label>
                 <select id="marca" name="marca" required>
                     <option value="">Selecione...</option>
-                    <option value="Glock">Glock</option>
-                    <option value="Taurus">Taurus</option>
-                    <option value="CZ">CZ</option>
-                    <option value="Beretta">Beretta</option>
-                    <option value="Rossi">Rossi</option>
-                    <option value="Imbel">Imbel</option>
-                    <option value="S&W">S&W</option>
-                    <option value="Winchester">Winchester</option>
+                    <option value="Glock" {% if weapon.marca == "Glock" %} selected {% endif %}>Glock</option>
+                    <option value="Taurus" {% if weapon.marca == "Taurus" %} selected {% endif %}>Taurus</option>
+                    <option value="CZ" {% if weapon.marca == "CZ" %} selected {% endif %}>CZ</option>
+                    <option value="Beretta" {% if weapon.marca == "Beretta" %} selected {% endif %}>Beretta</option>
+                    <option value="Rossi" {% if weapon.marca == "Rossi" %} selected {% endif %}>Rossi</option>
+                    <option value="Imbel" {% if weapon.marca == "Imbel" %} selected {% endif %}>Imbel</option>
+                    <option value="S&W" {% if weapon.marca == "S&W" %} selected {% endif %}>S&W</option>
+                    <option value="Winchester" {% if weapon.marca == "Winchester" %} selected {% endif %}>Winchester</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="capacidade">Capacidade:</label>
                 <input type="number" id="capacidade" name="capacidade" value="{{ weapon.capacidade }}" required>
             </div>
-            <div class="form-group">
-                <button type="submit">Confirmar Edição</button>
+            <div class="form-group button-group">
+                <button type="submit" class="submit">Confirmar Edição</button>
+                <button type="button" class="cancel" onclick="window.location.href='/'">Cancelar Edição</button>
             </div>
         </form>
     </div>
