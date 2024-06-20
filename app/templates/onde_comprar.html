@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
+    <title>OndeComprar</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -64,11 +64,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            padding-top: 70px; /* Ajuste para acomodar a altura da navbar */
+            padding-top: 70px; 
         }
         .map-container {
             flex: 2;
-            background-image: url('https://uploaddeimagens.com.br/images/004/801/747/full/o9D7N-lojas-de-armas-bras-lia-nbsp-_%281%29.png?1718859531'); /* Exemplo de URL de imagem de teste */
+            background-image: url('https://uploaddeimagens.com.br/images/004/801/747/full/o9D7N-lojas-de-armas-bras-lia-nbsp-_%281%29.png?1718859531'); 
             background-size: cover;
             background-position: center;
             height: 80%;
@@ -82,16 +82,23 @@
             padding: 20px;
         }
         .address {
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.8); 
             color: #fff;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
             text-align: center;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
+            width: 70%; 
+            margin: 20px auto; 
+        }
+        .logo2-container {
+            margin-right: 960px;
+            display: flex;
+            justify-content: center; 
         }
     </style>
 </head>
@@ -101,21 +108,26 @@
             <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
         </a>
         <h1>V H L</h1>
+        <div class="logo2-container">
+            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
+        </div>
         <div class="top-menu">
             <a href="/armas">Armas</a>
             <a href="/quemsomos">Quem Somos</a>
             <a href="/licenca">Licença</a>
         </div>
     </div>
+    </div>
 
     <div class="container">
         <div class="map-container"></div>
         <div class="address-container">
-            <div class="address">Endereço 1</div>
-            <div class="address">Endereço 2</div>
-            <div class="address">Endereço 3</div>
-            <div class="address">Endereço 4</div>
-            <div class="address">Endereço 5</div>
+            <div class="address">LOJAS</div>
+            <div class="address">PKF-Armas: SHCN CLN 108 BL E - Brasília, DF, 70744-540, Brasil</div>
+            <div class="address">Guns Sport: SQN 309 Bloco A Loja 2 - Brasília, DF, 70809-309, Brasil</div>
+            <div class="address">Trincheira: SQS 407 Bloco B Loja 5 - Brasília, DF, 70237-407, Brasil</div>
+            <div class="address">Red-dot SCN Quadra 04 Bloco A Loja 10 - Brasília, DF, 70710-004, Brasil</div>
+            <div class="address">Mac Custom: SQS 208 Bloco E Loja 3 - Brasília, DF, 70208-208, Brasil</div>
         </div>
     </div>
 </body>

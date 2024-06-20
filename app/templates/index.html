@@ -199,25 +199,23 @@
             background-position: center;
             height: 50vh;
             display: flex;
-            justify-content: flex-start; /* Ajustado para alinhar à esquerda */
+            justify-content: flex-start;
             align-items: center;
-            text-align: center; /* Manter centralizado o texto dentro do container */
+            text-align: center;
             margin-top: 90px;
             width: 100%;
             box-shadow: none;
-            padding-left: 30px; /* Espaço de 30px à esquerda da tela */
+            padding-left: 30px;
         }
         .hero-content2 h2 {
             margin-bottom: 10px;
             font-size: 2.5em;
         }
-    
         .hero-content2 p {
             font-size: 1.2em;
             line-height: 1.5;
-            margin-left: 20px; /* Ajustado para 20px para manter um espaço menor */
+            margin-left: 20px;
         }
-    
         .ondec {
             color: #fff;
             background-color: #ff7f00;
@@ -227,9 +225,8 @@
             font-size: 1.5em;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-left: 20px; /* Espaço entre o texto e o botão */
+            margin-left: 20px;
         }
-    
         .ondec:hover {
             background-color: #e06b00;
             transform: scale(1.05);
@@ -243,25 +240,69 @@
             font-size: 1.5em;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-left: 20px; /* Espaço entre o texto e o botão */
+            margin-left: 20px;
         }
-    
         .catalogo:hover {
             background-color: #e06b00;
             transform: scale(1.05);
         }
-
-                    </style>
-                    <script>
-                        function confirmDeletion(event, url) {
-                            event.preventDefault();
-                            if (confirm("Confirmar exclusão de item?")) {
-                fetch(url, { method: 'DELETE' })
-                    .then(() => fetchWeapons())
-                    .catch(error => console.error('Error deleting weapon:', error));
-            }
+        .extra-containers {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            margin-top: 30px;
         }
-    </script>
+        .extra-container {
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            flex: 1;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .extra-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%; 
+            height: 100%; 
+        }
+        .extra-container:last-child {
+            margin-right: 0;
+        }
+        .extra-container h2 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .extra-container p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        .extra-container .extra-btn {
+            color: #fff;
+            background-color: #ff7f00;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+        }
+        .extra-container .extra-btn:hover {
+            background-color: #e06b00;
+            transform: scale(1.05);
+        }
+        .logo2-container {
+            margin-right: 960px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -269,6 +310,9 @@
             <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
         </a>
         <h1>V H L</h1>
+        <div class="logo2-container">
+            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
+        </div>
         <div class="top-menu">
             <a href="/armas">Armas</a>
             <a href="/quemsomos">Quem Somos</a>
@@ -291,5 +335,21 @@
             <a class="ondec" href="/ondecomprar">ENCONTRE UM REVENDEDOR</a>
         </div>
     </div>
+    <div class="extra-containers">
+        <div class="extra-container" style="background-image: url('https://c4.wallpaperflare.com/wallpaper/289/449/287/gun-weapon-revolver-smith-and-wesson-wallpaper-preview.jpg');">
+            <div class="extra-content">
+                <h2>Licença</h2>
+                <p>Saiba tudo o que você precisa para comprar uma arma de fogo!</p>
+                <a class="extra-btn" href="/licenca">Mais Informações</a>
+            </div>
+        </div>
+        <div class="extra-container" style="background-image: url('https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831');">
+            <div class="extra-content">
+                <h2>Quem Somos</h2>
+                <p>Conheça mais sobre a VHL</p>
+                <a class="extra-btn" href="/quemsomos">Sobre</a>
+            </div>
+        </div>
+    </div>
 </body>
-</html> 
+</html>
