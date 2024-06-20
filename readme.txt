@@ -7,13 +7,10 @@ A API é uma ferramenta para catalogar e armazenar dados de armas de fogo.
 
 2. Funcionalidades:
 ● Cadastro de Armas: Permite o registro de novas armas no sistema, incluindo detalhes como modelo, fabricante e calibre.
-● Consulta de Armas: Permite a busca de armas cadastradas por diferentes critérios, como modelo e fabricante.
 ● Atualização de Dados: Permite a atualização das informações das armas já cadastradas.
 ● Remoção de Armas: Permite a exclusão de registros de armas do sistema.
 ● Conexão com Banco de Dados Externo: A aplicação se conecta a um banco de dados PostgreSQL para armazenamento persistente dos dados.
 ● Navegação Estruturada: Suporte para navegação através de múltiplas ramificações partindo de uma mesma raiz (home), facilitando a organização e acesso hierárquico às diferentes seções da aplicação.
-● Baixo Acoplamento: As diferentes partes do sistema são projetadas para serem independentes, facilitando a manutenção e evolução da aplicação.
-● Alta Coesão: As funcionalidades relacionadas estão agrupadas de forma lógica, aumentando a clareza e eficiência do código.
 
 3. Requisitos
 ● Python 3.8+: Linguagem de programação utilizada.
