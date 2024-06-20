@@ -29,29 +29,29 @@ Este projeto foi desenvolvido para fins acadêmicos por estudantes dedicados de 
 
 4.2 Instalação da API:
 4.2.1. Clone o repositório:
-    ```sh
-    git clone https://github.com/Veloso1410/trabalho_final_prog_web.git
-    ```
+
+    git clone: https://github.com/Veloso1410/trabalho_final_prog_web.git
+
 4.2.2. Navegue até o diretório do projeto:
-    ```sh
+
     cd trabalho_final_prog_web
-    ```
+ 
 4.2.3. Crie um ambiente virtual:
-    ```sh
+
     python -m venv venv
-    ```
+
 4.2.4. Ative o ambiente virtual:
     - No Windows:
-        ```sh
+        
         venv\Scripts\activate
-        ```
+        
 
 4.2.5. Instale as dependências:
-    ```sh
+    
     pip install fastapi uvicorn sqlalchemy alembic asyncpg psycopg2
-    ```
+    
 4.2.6. Configure o banco de dados PostgreSQL no arquivo `settings.py`:
-    ```python
+    python
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -62,15 +62,15 @@ Este projeto foi desenvolvido para fins acadêmicos por estudantes dedicados de 
             'PORT': '5432',
         }
     }
-    ```
+    
 4.2.7. Configure o banco de dados PosgreSQL no SGBD:
     a. Abra o pgAdmin (PostgreSQL) na porta 5432;
     b. Crie uma tabela com o nome "armas".
     
 4.2.8. Inicie o app:
-    ```sh
+    
     python -m main.py
-    ```
+    
 
 4.3. Uso da API
 4.3.1 Endpoints:
@@ -82,31 +82,31 @@ Este projeto foi desenvolvido para fins acadêmicos por estudantes dedicados de 
 
 4.3.3. Exemplos de uso:
 - Listar armas:
-    ```sh
+    
     GET /api/armas/
-    ```
+    
 - Criar uma nova arma:
-    ```sh
+    
     POST /api/armas/
     {
         "modelo": "CTT",
         "fabricante": "Taurus",
         "calibre": ".40"
     }
-    ```
+    
 - Atualizar uma arma existente:
-    ```sh
+    
     PUT /api/armas/1/
     {
         "modelo": "24/7",
         "fabricante": "Taurus",
         "calibre": ".40"
     }
-    ```
+    
 - Deletar uma arma:
-    ```sh
+    
     DELETE /api/armas/1/
-    ```
+    
 5. Possíveis erros e soluções:
 ● Erro de Conexão com o Banco de Dados:
     - Descrição: A aplicação não consegue se conectar ao banco de dados PostgreSQL.
