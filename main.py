@@ -1,4 +1,7 @@
-# app/main.py
+###################################################################
+# IMPORT SESSION #
+###################################################################
+
 from typing import Annotated
 from fastapi import FastAPI, Depends, HTTPException, Request, Form
 from sqlalchemy.orm import Session
@@ -20,6 +23,25 @@ def get_db():
         yield db
     finally:
         db.close()
+###################################################################
+# ENDPOINTS #
+###################################################################
+
+@app.get("/armas")
+def homearmas(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("armas.html", {"request": request}) 
+      
+@app.get("/quemsomos")
+def homequemsomos(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("quem_somos.html", {"request": request})
+
+@app.get("/ondecomprar")
+def homeondecomprar(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("onde_comprar.html", {"request": request})
+
+@app.get("/licenca")
+def homelicença(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("licenca.html", {"request": request})
 
 @app.get("/")
 def home(request: Request) -> HTMLResponse:
@@ -50,7 +72,7 @@ def adicionar_arma(
     
     create_weapon(db, weapon_data)
 
-    return RedirectResponse(url="/", status_code=303)
+    return RedirectResponse(url="/armas", status_code=303)
 
 @app.get("/editar/{numero_de_serie}")
 def editar_arma(numero_de_serie: int, request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
@@ -59,7 +81,6 @@ def editar_arma(numero_de_serie: int, request: Request, db: Session = Depends(ge
         pass
     return templates.TemplateResponse("editar_arma.html", {"request": request, "weapon": weapon})
 
-# Endpoint para atualizar uma arma (POST)
 @app.post("/editar/{numero_de_serie}")
 def atualizar_arma(
     numero_de_serie: int,
@@ -81,10 +102,10 @@ def atualizar_arma(
     weapon = update_weapon(db, numero_de_serie, weapon_data)
 
     if not weapon:
-        # Lógica para lidar com o caso em que a arma não é encontrada
+        
         pass
 
-    return RedirectResponse(url="/", status_code=303)
+    return RedirectResponse(url="/armas", status_code=303)
 
 @app.on_event("startup")
 def startup():
