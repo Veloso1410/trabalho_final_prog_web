@@ -2,13 +2,16 @@ VHL ARMAS DE FOGO API
 
 1. Introdução
 
-Este é o README do projeto de API web VHL Armas de Fogo, desenvolvido para a disciplina Programação Web. 
+Este é o README do projeto de API web VHL Armas de Fogo, desenvolvido para a disciplina de Programação Web. 
 A API é uma ferramenta para catalogar e armazenar dados de armas de fogo.
+Nele, há informações satíricas sobre a empresa fictícia VHL e suas atividades. 
+Este projeto foi desenvolvido para fins acadêmicos por estudantes dedicados de Análise e Desenvolvimento de Sistemas.
 
 2. Funcionalidades:
 ● Cadastro de Armas: Permite o registro de novas armas no sistema, incluindo detalhes como modelo, fabricante e calibre.
 ● Atualização de Dados: Permite a atualização das informações das armas já cadastradas.
 ● Remoção de Armas: Permite a exclusão de registros de armas do sistema.
+● Exibição de mapa: Exibe um mapa com os principais pontos de compra.
 ● Conexão com Banco de Dados Externo: A aplicação se conecta a um banco de dados PostgreSQL para armazenamento persistente dos dados.
 ● Navegação Estruturada: Suporte para navegação através de múltiplas ramificações partindo de uma mesma raiz (home), facilitando a organização e acesso hierárquico às diferentes seções da aplicação.
 
