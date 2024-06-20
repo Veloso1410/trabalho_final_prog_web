@@ -1,4 +1,4 @@
-# app/database.py
+# Este é o codigo que vai explicar ..........
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

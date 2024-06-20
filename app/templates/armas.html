@@ -23,7 +23,7 @@
             left: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            height: 70px;
+            height: 70px; /* Ajuste a altura da navbar para 70px */
         }
         .navbar img {
             height: 50px;
@@ -42,9 +42,10 @@
         }
         .container {
             width: 80%;
-            margin: 150px auto 0;
+            margin: 150px auto 0; /* Ajuste o margin-top para 150px */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.1);
+            
             border-radius: 10px;
         }
         h2 {
@@ -144,12 +145,13 @@
         .add-weapon:hover {
             background-color: #218838;
         }
+        /* Estilos para os links no canto superior direito */
         .top-menu {
             position: absolute;
             top: 20px;
             right: 20px;
             display: flex;
-            height: 30px;
+            height: 30px; /* Ajuste a altura dos links */
         }
         .top-menu a {
             text-decoration: none;
@@ -163,21 +165,25 @@
             background-color: #ff7f00;
             color: #fff;
         }
+
+        /* Estilos para o container hero */
         .hero-container {
-            background-image: url('https://ammoterra.com/system/blogs/images/000/000/033/original/fdfde48114978375681d2dafeceb8c9b.jpg?1542977913');
+            background-image: url('https://ammoterra.com/system/blogs/images/000/000/033/original/fdfde48114978375681d2dafeceb8c9b.jpg?1542977913'); /* Substitua pelo caminho da sua imagem */
             background-size: cover;
             background-position: center;
-            height: 30vh;
+            height: 30vh; /* Ajuste a altura conforme necessário; 60vh significa 60% da altura da viewport */
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            margin-top: 70px;
-            width: 100%;
-            box-shadow: none;
+            margin-top: 70px; /* Ajuste conforme a altura da navbar */
+            width: 100%; /* Ocupar 100% da largura horizontalmente */
+            box-shadow: none; /* Remover a sombra */
         }
+
+
         .hero-content {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
             padding: 20px;
             border-radius: 10px;
             width: 100%;
@@ -185,82 +191,76 @@
             margin-top: 70px;
             color: #ffffff;
         }
+
         .hero-content h2 {
             margin-bottom: 10px;
             font-size: 2.5em;
         }
+
         .hero-content p {
             font-size: 1.2em;
             line-height: 1.5;
         }
-        .hero-container2 {
-            background-image: url('https://wallpaperset.com/w/full/d/a/d/473139.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 50vh;
-            display: flex;
-            justify-content: flex-start; /* Ajustado para alinhar à esquerda */
-            align-items: center;
-            text-align: center; /* Manter centralizado o texto dentro do container */
-            margin-top: 90px;
-            width: 100%;
-            box-shadow: none;
-            padding-left: 30px; /* Espaço de 30px à esquerda da tela */
-        }
-        .hero-content2 h2 {
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
-    
-        .hero-content2 p {
-            font-size: 1.2em;
-            line-height: 1.5;
-            margin-left: 20px; /* Ajustado para 20px para manter um espaço menor */
-        }
-    
-        .ondec {
-            color: #fff;
-            background-color: #ff7f00;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-left: 20px; /* Espaço entre o texto e o botão */
-        }
-    
-        .ondec:hover {
-            background-color: #e06b00;
-            transform: scale(1.05);
-        }
-        .catalogo {
-            color: #fff;
-            background-color: #ff7f00;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-left: 20px; /* Espaço entre o texto e o botão */
-        }
-    
-        .catalogo:hover {
-            background-color: #e06b00;
-            transform: scale(1.05);
+    </style>
+    <script>
+        function fetchWeapons() {
+            fetch('/weapons')
+                .then(response => response.json())
+                .then(weapons => {
+                    const grid = document.querySelector('.weapon-grid');
+                    grid.innerHTML = '';
+                    weapons.forEach(weapon => {
+                        const gridItem = document.createElement('div');
+                        gridItem.classList.add('weapon-item');
+
+                        gridItem.innerHTML = `
+                            <img src="${weapon.image_url}" alt="${weapon.modelo}">
+                            <div class="weapon-name">
+                                <strong>${weapon.modelo}</strong>, <strong>${weapon.numero_de_serie}</strong>
+                                <span class="expand-arrow">▼</span>
+                            </div>
+                            <div class="weapon-details">
+                                <ul>
+                                    <li><strong>Número de Série:</strong> ${weapon.numero_de_serie}</li>
+                                    <li><strong>Classe:</strong> ${weapon.classe}</li>
+                                    <li><strong>Calibre:</strong> ${weapon.calibre}</li>
+                                    <li><strong>Modelo:</strong> ${weapon.modelo}</li>
+                                    <li><strong>Marca:</strong> ${weapon.marca}</li>
+                                    <li><strong>Capacidade:</strong> ${weapon.capacidade}</li>
+                                </ul>
+                            </div>
+                            <div class="actions">
+                                <a href="/editar/${weapon.numero_de_serie}" class="edit">Editar</a>
+                                <a href="#" class="remove" onclick="confirmDeletion(event, '/weapons/${weapon.numero_de_serie}')">Remover</a>
+                            </div>
+                        `;
+
+                        grid.appendChild(gridItem);
+
+                        const expandArrow = gridItem.querySelector('.expand-arrow');
+                        const weaponDetails = gridItem.querySelector('.weapon-details');
+
+                        expandArrow.addEventListener('click', () => {
+                            weaponDetails.style.display = weaponDetails.style.display === 'none' ? 'block' : 'none';
+                            expandArrow.classList.toggle('rotate-down');
+                        });
+                    });
+                })
+                .catch(error => console.error('Error fetching weapons:', error));
         }
 
-                    </style>
-                    <script>
-                        function confirmDeletion(event, url) {
-                            event.preventDefault();
-                            if (confirm("Confirmar exclusão de item?")) {
+        function confirmDeletion(event, url) {
+            event.preventDefault();
+            if (confirm("Confirmar exclusão de item?")) {
                 fetch(url, { method: 'DELETE' })
                     .then(() => fetchWeapons())
                     .catch(error => console.error('Error deleting weapon:', error));
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchWeapons();
+        });
     </script>
 </head>
 <body>
@@ -270,7 +270,6 @@
         </a>
         <h1>V H L</h1>
         <div class="top-menu">
-            <a href="/armas">Armas</a>
             <a href="/quemsomos">Quem Somos</a>
             <a href="/ondecomprar">Onde Comprar</a>
             <a href="/licenca">Licença</a>
@@ -281,15 +280,13 @@
         <div class="hero-content">
             <h2>CATÁLOGO DE ARMAS</h2>
             <p>Glock, Taurus, CZ, Beretta, Rossi, Imbel, S&W e Winchester</p>
-            <a class="catalogo" href="/armas">Nosso Catálogo</a>
         </div>
     </div>
-    <div class="hero-container2">
-        <div class="hero-content2">
-            <h2>Onde Comprar</h2>
-            <p>Localize a loja mais perto de você</p>
-            <a class="ondec" href="/ondecomprar">ENCONTRE UM REVENDEDOR</a>
-        </div>
+
+    <div class="container">
+        <h2>Lista de Armas</h2>
+        <div class="weapon-grid"></div>
+        <a href="/adicionar" method="post" class="add-weapon">Adicionar Nova Arma</a>
     </div>
 </body>
-</html> 
+</html>

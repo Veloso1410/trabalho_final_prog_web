@@ -20,6 +20,11 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@app.get("/armas")
+def homearmas(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("armas.html", {"request": request}) 
+      
 @app.get("/quemsomos")
 def homequemsomos(request: Request) -> HTMLResponse:
     return templates.TemplateResponse("quem_somos.html", {"request": request})
@@ -61,7 +66,7 @@ def adicionar_arma(
     
     create_weapon(db, weapon_data)
 
-    return RedirectResponse(url="/", status_code=303)
+    return RedirectResponse(url="/armas", status_code=303)
 
 @app.get("/editar/{numero_de_serie}")
 def editar_arma(numero_de_serie: int, request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
@@ -95,7 +100,7 @@ def atualizar_arma(
         # Lógica para lidar com o caso em que a arma não é encontrada
         pass
 
-    return RedirectResponse(url="/", status_code=303)
+    return RedirectResponse(url="/armas", status_code=303)
 
 @app.on_event("startup")
 def startup():
