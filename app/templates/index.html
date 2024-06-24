@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Armas</title>
+    <title>Catalogo de Armas</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url('https://wallpapers.com/images/hd/camo-speckled-army-print-4jwhifv2ng29aoqj.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
+            background-color: #1c1c1c;
+            color: #ffffff;
             margin: 0;
             padding: 0;
         }
@@ -17,184 +16,255 @@
             width: 100%;
             background-color: #000;
             padding: 15px 0;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            height: 70px;
+            text-align: center;
+        }
+        .navbar img {
+            height: 50px;
+            margin-left: 20px;
         }
         .navbar h1 {
+            font-family: 'Arial Black', Gadget, sans-serif;
             margin: 0;
             color: #fff;
-            font-size: 1.5em;
+            font-size: 3.5em;
             letter-spacing: 2px;
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 30px;
+            text-shadow: 1px 1px 2px orange;
+        }
+        .logo2-container {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .logo2-container img {
+            height: 50px;
+        }
+        .top-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            height: 30px;
+        }
+        .top-menu a {
+            text-decoration: none;
+            color: #ff7f00;
+            margin-left: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .top-menu a:hover {
+            background-color: #ff7f00;
+            color: #fff;
         }
         .container {
             width: 80%;
-            margin: 70px auto 0;
+            margin: 150px auto 0;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            overflow: hidden;
         }
         h2 {
             text-align: center;
-            color: #333;
+            color: #f8f9fa;
             margin-bottom: 30px;
             font-size: 2em;
         }
-        .weapon-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .weapon-item {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            position: relative;
-        }
-        .weapon-name {
+        .hero-container {
+            background-image: url('https://ammoterra.com/system/blogs/images/000/000/033/original/fdfde48114978375681d2dafeceb8c9b.jpg?1542977913');
+            background-size: cover;
+            background-position: center;
+            height: 30vh;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
+            text-align: center;
+            margin-top: 70px;
+            width: 100%;
+            box-shadow: none;
         }
-        .weapon-name-text {
-            flex: 1; /* Ocupa todo o espaço disponível */
-            overflow: hidden; /* Evita que o texto exceda o espaço */
-            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
-            text-overflow: ellipsis; /* Adiciona reticências quando o texto é cortado */
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            height: 30vh;
+            margin-top: 70px;
+            color: #ffffff;
         }
-        .expand-arrow {
-            cursor: pointer;
+        .hero-content h2 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .hero-content p {
             font-size: 1.2em;
-            transition: transform 0.3s ease;
-            margin-left: 5px;
+            line-height: 1.5;
         }
-        .weapon-details {
-            padding-top: 10px;
-        }
-        .weapon-details ul {
-            list-style: none;
-            padding: 0;
-        }
-        .weapon-details li {
-            margin-bottom: 5px;
-        }
-        .actions {
+        .hero-container2 {
+            background-image: url('https://wallpaperset.com/w/full/d/a/d/473139.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
             display: flex;
-            gap: 10px;
-            justify-content: flex-end; /* Botões de ação na direita */
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            margin-top: 90px;
+            width: 100%;
+            box-shadow: none;
+            padding-left: 30px;
         }
-        .actions a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #007bff;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+        .hero-content2 h2 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
         }
-        .actions a:hover {
-            background-color: #0056b3;
-        }
-        .actions .remove {
-            background-color: #dc3545;
-        }
-        .actions .remove:hover {
-            background-color: #c82333;
-        }
-        .add-weapon {
-            display: block;
-            width: fit-content;
-            margin: 30px auto 0;
-            text-decoration: none;
-            color: #fff;
-            background-color: #28a745;
-            padding: 10px 20px;
-            border-radius: 5px;
+        .hero-content2 p {
             font-size: 1.2em;
-            transition: background-color 0.3s ease;
+            line-height: 1.5;
+            margin-left: 20px;
         }
-        .add-weapon:hover {
-            background-color: #218838;
+        .ondec {
+            color: #fff;
+            background-color: #ff7f00;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-left: 20px;
         }
-        .expand-arrow.rotate-down {
-            transform: rotate(90deg);
+        .ondec:hover {
+            background-color: #e06b00;
+            transform: scale(1.05);
+        }
+        .catalogo {
+            color: #fff;
+            background-color: #ff7f00;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-left: 20px;
+        }
+        .catalogo:hover {
+            background-color: #e06b00;
+            transform: scale(1.05);
+        }
+        .extra-containers {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            margin-top: 30px;
+        }
+        .extra-container {
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            flex: 1;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .extra-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%; 
+            height: 100%; 
+        }
+        .extra-container:last-child {
+            margin-right: 0;
+        }
+        .extra-container h2 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .extra-container p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        .extra-container .extra-btn {
+            color: #fff;
+            background-color: #ff7f00;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+        }
+        .extra-container .extra-btn:hover {
+            background-color: #e06b00;
+            transform: scale(1.05);
         }
     </style>
-    <script>
-        function fetchWeapons() {
-            fetch('/weapons')
-                .then(response => response.json())
-                .then(weapons => {
-                    const list = document.querySelector('.weapon-list');
-                    list.innerHTML = '';
-                    weapons.forEach(weapon => {
-                        const listItem = document.createElement('li');
-                        listItem.classList.add('weapon-item');
-
-                        listItem.innerHTML = `
-                            <div class="weapon-name">
-                                <div class="weapon-name-text">
-                                    <strong>${weapon.modelo}</strong>, <strong>${weapon.numero_de_serie}</strong>
-                                </div>
-                                <span class="expand-arrow">▼</span>
-                            </div>
-                            <div class="weapon-details">
-                                <ul>
-                                    <li><strong>Número de Série:</strong> ${weapon.numero_de_serie}</li>
-                                    <li><strong>Classe:</strong> ${weapon.classe}</li>
-                                    <li><strong>Calibre:</strong> ${weapon.calibre}</li>
-                                    <li><strong>Modelo:</strong> ${weapon.modelo}</li>
-                                    <li><strong>Marca:</strong> ${weapon.marca}</li>
-                                    <li><strong>Capacidade:</strong> ${weapon.capacidade}</li>
-                                </ul>
-                            </div>
-                            <div class="actions">
-                                <a href="/editar/${weapon.numero_de_serie}">Editar</a>
-                                <a href="#" class="remove" onclick="confirmDeletion(event, '/weapons/${weapon.numero_de_serie}')">Remover</a>
-                            </div>
-                        `;
-
-                        list.appendChild(listItem);
-
-                        const expandArrow = listItem.querySelector('.expand-arrow');
-                        const weaponDetails = listItem.querySelector('.weapon-details');
-
-                        // Iniciar mostrando os detalhes
-                        weaponDetails.style.display = 'block';
-                        expandArrow.classList.add('rotate-down');
-
-                        expandArrow.addEventListener('click', () => {
-                            listItem.classList.toggle('expanded');
-                            weaponDetails.style.display = weaponDetails.style.display === 'none' ? 'block' : 'none';
-                            expandArrow.classList.toggle('rotate-down');
-                        });
-                    });
-                })
-                .catch(error => console.error('Error fetching weapons:', error));
-        }
-
-        function confirmDeletion(event, url) {
-            event.preventDefault();
-            if (confirm("Confirmar exclusão de item?")) {
-                fetch(url, { method: 'DELETE' })
-                    .then(() => fetchWeapons())
-                    .catch(error => console.error('Error deleting weapon:', error));
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', fetchWeapons);
-    </script>
 </head>
 <body>
     <div class="navbar">
-        <h1>CATÁLOGO DE ARMAS</h1>
+        <a href="/">
+            <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
+        </a>
+        <h1>V H L</h1>
+        <div class="logo2-container">
+            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
+        </div>
+        <div class="top-menu">
+            <a href="/armas">Armas</a>
+            <a href="/quemsomos">Quem Somos</a>
+            <a href="/ondecomprar">Onde Comprar</a>
+            <a href="/licenca">Licença</a>
+        </div>
     </div>
-    <div class="container">
-        <h2>Lista de Armas</h2>
-        <ul class="weapon-list"></ul>
-        <a href="/adicionar" method="post" class="add-weapon">Adicionar Nova Arma</a>
+
+    <div class="hero-container">
+        <div class="hero-content">
+            <h2>CATÁLOGO DE ARMAS</h2>
+            <p>Glock, Taurus, CZ, Beretta, Rossi, Imbel, S&W e Winchester</p>
+            <a class="catalogo" href="/armas">Nosso Catálogo</a>
+        </div>
+    </div>
+    <div class="hero-container2">
+        <div class="hero-content2">
+            <h2>Onde Comprar</h2>
+            <p>Localize a loja mais perto de você</p>
+            <a class="ondec" href="/ondecomprar">ENCONTRE UM REVENDEDOR</a>
+        </div>
+    </div>
+    <div class="extra-containers">
+        <div class="extra-container" style="background-image: url('https://c4.wallpaperflare.com/wallpaper/289/449/287/gun-weapon-revolver-smith-and-wesson-wallpaper-preview.jpg');">
+            <div class="extra-content">
+                <h2>Licença</h2>
+                <p>Saiba tudo o que você precisa para comprar uma arma de fogo!</p>
+                <a class="extra-btn" href="/licenca">Mais Informações</a>
+            </div>
+        </div>
+        <div class="extra-container" style="background-image: url('https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831');">
+            <div class="extra-content">
+                <h2>Quem Somos</h2>
+                <p>Conheça mais sobre a VHL</p>
+                <a class="extra-btn" href="/quemsomos">Sobre</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

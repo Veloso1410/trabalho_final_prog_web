@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armas VHL</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #000;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            height: 70px;
+        }
+        .navbar img {
+            height: 50px;
+            margin-left: 20px;
+        }
+        .navbar h1 {
+            font-family: 'Arial Black', Gadget, sans-serif;
+            margin: 0;
+            color: #fff;
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 30px;
+            text-shadow: 1px 1px 2px orange;
+        }
+        .container {
+            width: 80%;
+            margin: 150px auto 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #f8f9fa;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .weapon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .weapon-item {
+            padding: 15px;
+            background-color: #333;
+            border: 2px solid #555;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .weapon-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .weapon-name {
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+        .weapon-model {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+        .expand-arrow {
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+            display: inline-block;
+        }
+        .expand-arrow.rotate-down {
+            transform: rotate(90deg);
+        }
+        .weapon-details {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .weapon-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        .weapon-details li {
+            margin-bottom: 5px;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .actions a {
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .actions .edit {
+            color: #000;
+            background-color: #fff;
+        }
+        .actions .edit:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+        .actions .remove {
+            color: #fff;
+            background-color: #ff7f00;
+        }
+        .actions .remove:hover {
+            background-color: #e06b00;
+            transform: scale(1.05);
+        }
+        .add-weapon {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            text-decoration: none;
+            color: #fff;
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+        .add-weapon:hover {
+            background-color: #218838;
+        }
+        .top-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            height: 30px;
+        }
+        .top-menu a {
+            text-decoration: none;
+            color: #ff7f00;
+            margin-left: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .top-menu a:hover {
+            background-color: #ff7f00;
+            color: #fff;
+        }
+        .hero-container {
+            background-image: url('https://ammoterra.com/system/blogs/images/000/000/033/original/fdfde48114978375681d2dafeceb8c9b.jpg?1542977913'); 
+            background-size: cover;
+            background-position: center;
+            height: 30vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 70px; 
+            width: 100%; 
+            box-shadow: none; 
+        }
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            height: 30vh;
+            margin-top: 70px;
+            color: #ffffff;
+        }
+        .hero-content h2 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .hero-content p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        .logo2-container {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .logo2-container img {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">
+            <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
+        </a>
+        <h1>V H L</h1>
+        <div class="logo2-container">
+            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
+        </div>
+        <div class="top-menu">
+            <a href="/quemsomos">Quem Somos</a>
+            <a href="/ondecomprar">Onde Comprar</a>
+            <a href="/licenca">Licença</a>
+        </div>
+    </div>
+
+    <div class="hero-container">
+        <div class="hero-content">
+            <h2>CATÁLOGO DE ARMAS</h2>
+            <p>Glock, Taurus, CZ, Beretta, Rossi, Imbel, S&W e Winchester</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Armas</h2>
+        <div class="weapon-grid"></div>
+        <a href="/adicionar" method="post" class="add-weapon">Adicionar Nova Arma</a>
+    </div>
+
+    <script>
+        function fetchWeapons() {
+            fetch('/weapons')
+                .then(response => response.json())
+                .then(weapons => {
+                    const grid = document.querySelector('.weapon-grid');
+                    grid.innerHTML = '';
+                    weapons.forEach(weapon => {
+                        const gridItem = document.createElement('div');
+                        gridItem.classList.add('weapon-item');
+
+                        gridItem.innerHTML = `
+                            <div class="weapon-name">
+                                <strong>${weapon.modelo}</strong>, <strong>${weapon.numero_de_serie}</strong>
+                                <span class="expand-arrow">▼</span>
+                            </div>
+                            <div class="weapon-details">
+                                <ul>
+                                    <li><strong>Número de Série:</strong> ${weapon.numero_de_serie}</li>
+                                    <li><strong>Classe:</strong> ${weapon.classe}</li>
+                                    <li><strong>Calibre:</strong> ${weapon.calibre}</li>
+                                    <li><strong>Modelo:</strong> ${weapon.modelo}</li>
+                                    <li><strong>Marca:</strong> ${weapon.marca}</li>
+                                    <li><strong>Capacidade:</strong> ${weapon.capacidade}</li>
+                                </ul>
+                            </div>
+                            <div class="actions">
+                                <a href="/editar/${weapon.numero_de_serie}" class="edit">Editar</a>
+                                <a href="#" class="remove" onclick="confirmDeletion(event, '/weapons/${weapon.numero_de_serie}')">Remover</a>
+                            </div>
+                        `;
+
+                        grid.appendChild(gridItem);
+
+                        const expandArrow = gridItem.querySelector('.expand-arrow');
+                        const weaponDetails = gridItem.querySelector('.weapon-details');
+
+                        expandArrow.addEventListener('click', () => {
+                            weaponDetails.style.display = weaponDetails.style.display === 'none' ? 'block' : 'none';
+                            expandArrow.classList.toggle('rotate-down');
+                        });
+                    });
+                })
+                .catch(error => console.error('Error fetching weapons:', error));
+        }
+
+        function confirmDeletion(event, url) {
+            event.preventDefault();
+            if (confirm("Confirmar exclusão de item?")) {
+                fetch(url, { method: 'DELETE' })
+                    .then(() => fetchWeapons())
+                    .catch(error => console.error('Error deleting weapon:', error));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchWeapons();
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,0 @@
-- realizar um readme
-- envio por arquivo zipado com o nome:
-    "Henrique Brandão_Lucas Drumond_Vitor Veloso_Catalogo de Armas.zip"
-
-- fazer apresentação em powerpoint
-- fazer upload no github com conteinerização
-    Exemplo:
-        "https://github.com/ph-cardoso/trabalho_final_prog_web.git"

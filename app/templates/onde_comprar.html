@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OndeComprar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #000;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            height: 70px;
+        }
+        .navbar img {
+            height: 50px;
+            margin-left: 20px;
+        }
+        .navbar h1 {
+            font-family: 'Arial Black', Gadget, sans-serif;
+            margin: 0;
+            color: #fff;
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 30px;
+            text-shadow: 1px 1px 2px orange;
+        }
+        .logo2-container {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .logo2-container img {
+            height: 50px;
+        }
+        .top-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            height: 30px;
+        }
+        .top-menu a {
+            text-decoration: none;
+            color: #ff7f00;
+            margin-left: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .top-menu a:hover {
+            background-color: #ff7f00;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 50px; 
+            margin-top: 50px; 
+        }
+        .map-container {
+            flex: 2;
+            background-image: url('https://uploaddeimagens.com.br/images/004/801/747/full/o9D7N-lojas-de-armas-bras-lia-nbsp-_%281%29.png?1718859531'); 
+            background-size: cover;
+            background-position: center;
+            height: 80%;
+            margin-right: 20px;
+        }
+        .address-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .address {
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: #fff;
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
+            width: 70%; 
+            margin: 20px auto; 
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">
+            <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
+        </a>
+        <h1>V H L</h1>
+        <div class="logo2-container">
+            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
+        </div>
+        <div class="top-menu">
+            <a href="/armas">Armas</a>
+            <a href="/quemsomos">Quem Somos</a>
+            <a href="/licenca">Licença</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="map-container"></div>
+        <div class="address-container">
+            <div class="address">LOJAS</div>
+            <div class="address"><a href="https://www.google.com/maps/place/Asa+Norte+Superquadra+Norte+304+BL+E+-+Asa+Norte,+Bras%C3%ADlia+-+DF,+70736-000/@-15.7760246,-47.8891759,17z/data=!3m1!4b1!4m6!3m5!1s0x935a3a53f9d0d229:0xabbe04ad9144c35c!8m2!3d-15.7760298!4d-47.886601!16s%2Fg%2F1ymsfkv50?entry=ttu" target="_blank" class="address">PKF-Armas</a></div>
+            <div class="address"><a href="https://www.google.com/maps/place/Asa+Norte+Superquadra+Norte+309+-+Asa+Norte,+Bras%C3%ADlia+-+DF,+70755-000/@-15.7611812,-47.8944325,17z/data=!3m1!4b1!4m10!1m2!2m1!1sSQN+309+BLOCO+A+LOJA+2+-+BRAS%C3%8DLIA,+DF,+70809-309,+BRASIL!3m6!1s0x935a3a37ad518785:0xfa09508c1cfd04d1!8m2!3d-15.7608957!4d-47.8890577!15sCjlTUU4gMzA5IEJMT0NPIEEgTE9KQSAyIC0gQlJBU8ONTElBLCBERiwgNzA4MDktMzA5LCBCUkFTSUySAQxzdWJsb2NhbGl0eTPgAQA!16s%2Fg%2F1ymwxzx8h?entry=ttu" target="_blank" class="address">GUNS SPORT</a></div>
+            <div class="address"><a href="" target="_blank" class="address">GUNS SPORT</a></div>
+            <div class="address"><a href="https://www.google.com/maps/place/Asa+Sul+Superquadra+Sul+407+-+Asa+Sul,+Bras%C3%ADlia+-+DF,+70256-000/@-15.8229087,-47.9200682,15z/data=!4m10!1m2!2m1!1sSQS+407+BLOCO+B+LOJA+5+-+BRAS%C3%8DLIA,+DF,+70237-407,+BRASIL!3m6!1s0x935a3acca4b434f5:0x26d9912f96847bd5!8m2!3d-15.8200982!4d-47.8964739!15sCjlTUVMgNDA3IEJMT0NPIEIgTE9KQSA1IC0gQlJBU8ONTElBLCBERiwgNzAyMzctNDA3LCBCUkFTSUySAQxzdWJsb2NhbGl0eTPgAQA!16s%2Fg%2F1ymwl4j9h?entry=ttu" target="_blank" class="address">TRINCHEIRA</a></div>
+            <div class="address"><a href="https://www.google.com/maps/place/Red+Dot+Custom/@-15.7623644,-47.8970496,17z/data=!3m1!4b1!4m6!3m5!1s0x935a3b0e4cc29bd5:0xc3081dbfe155acae!8m2!3d-15.7623696!4d-47.8921787!16s%2Fg%2F11qplsw3ny?entry=ttu" target="_blank" class="address">RED-DOT</a></div>
+            <div class="address"><a href="https://www.google.com/maps/place/Asa+Sul+Superquadra+Sul+208+BL+E+-+Asa+Sul,+Bras%C3%ADlia+-+DF,+70254-000/@-15.8208168,-47.9035024,17z/data=!4m10!1m2!2m1!1sSQS+208+BLOCO+E+LOJA+3+-+BRAS%C3%8DLIA,+DF,+70208-208,+BRASIL!3m6!1s0x935a3acabf2fd777:0x8d970d5fe3bffded!8m2!3d-15.820822!4d-47.9009275!15sCjlTUVMgMjA4IEJMT0NPIEUgTE9KQSAzIC0gQlJBU8ONTElBLCBERiwgNzAyMDgtMjA4LCBCUkFTSUySARFjb21wb3VuZF9idWlsZGluZ-ABAA!16s%2Fg%2F1ymwf7zjx?entry=ttu" target="_blank" class="address">MAC CUSTOM</a></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,9 +1,10 @@
-# app/models.py
+# IMPORT 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+# TABLE CREATION
 class Weapon(Base):
     __tablename__ = "weapons"
     numero_de_serie = Column(Integer, primary_key=True, index=True)
