@@ -66,6 +66,7 @@
             flex-direction: column;
             padding: 100px 20px; 
             text-align: center;
+            margin-top: 70px; /* Considerando a altura da navbar fixa */
         }
         .content {
             max-width: 800px;
@@ -86,9 +87,13 @@
             text-align: justify;
         }
         .logo2-container {
-            margin-right: 960px;
-            display: flex;
-            justify-content: center; 
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .logo2-container img {
+            height: 50px;
         }
     </style>
 </head>
@@ -107,19 +112,20 @@
             <a href="/ondecomprar">Onde Comprar</a>
         </div>
     </div>
-    </div>
 
     <div class="container">
         <div class="content">
             <h2>Licença</h2>
             <p>No Brasil, a compra de uma arma de fogo é regulamentada por leis específicas que visam controlar e monitorar rigorosamente o acesso às armas. Aqui estão as principais regras legais para comprar uma arma de fogo no Brasil:</p>
-            <p>1.	Idade mínima: A pessoa deve ter no mínimo 25 anos de idade, exceto para os cargos específicos previstos em lei.</p>
-            <p>2.	Requisitos gerais: O interessado deve atender a requisitos como idoneidade moral (não ter antecedentes criminais), aptidão psicológica, capacidade técnica para o manuseio da arma, entre outros.</p>
-            <p>3.   Autorização: É necessário obter autorização prévia da Polícia Federal para adquirir uma arma de fogo. Isso geralmente envolve um processo que inclui comprovação dos requisitos mencionados, preenchimento de formulários </p>
-            <p>4.	Documentação: São exigidos documentos como RG, CPF, comprovante de residência, além de comprovante de pagamento das taxas devidas.</p>
-            <p>5.	Registro: Após a compra, a arma deve ser registrada no Sistema Nacional de Armas (SINARM) da Polícia Federal.</p>
-            <p>6.	Limitações: Existem limitações quanto ao tipo de arma que pode ser adquirida e a quantidade que uma pessoa pode possuir, que variam de acordo com a legislação vigente.</p>
-            <p>7.	Uso: O uso da arma é restrito a situações específicas e regulamentadas, como defesa pessoal para civis e uso profissional para agentes de segurança pública.</p>
+            <ul>
+                <li>Idade mínima: A pessoa deve ter no mínimo 25 anos de idade, exceto para os cargos específicos previstos em lei.</li>
+                <li>Requisitos gerais: O interessado deve atender a requisitos como idoneidade moral (não ter antecedentes criminais), aptidão psicológica, capacidade técnica para o manuseio da arma, entre outros.</li>
+                <li>Autorização: É necessário obter autorização prévia da Polícia Federal para adquirir uma arma de fogo. Isso geralmente envolve um processo que inclui comprovação dos requisitos mencionados, preenchimento de formulários.</li>
+                <li>Documentação: São exigidos documentos como RG, CPF, comprovante de residência, além de comprovante de pagamento das taxas devidas.</li>
+                <li>Registro: Após a compra, a arma deve ser registrada no Sistema Nacional de Armas (SINARM) da Polícia Federal.</li>
+                <li>Limitações: Existem limitações quanto ao tipo de arma que pode ser adquirida e a quantidade que uma pessoa pode possuir, que variam de acordo com a legislação vigente.</li>
+                <li>Uso: O uso da arma é restrito a situações específicas e regulamentadas, como defesa pessoal para civis e uso profissional para agentes de segurança pública.</li>
+            </ul>
             <p>É fundamental ressaltar que as regras podem variar ao longo do tempo de acordo com eventuais mudanças na legislação. Portanto, é sempre recomendável verificar as informações mais recentes junto aos órgãos competentes, como a Polícia Federal e o Ministério da Justiça.</p>
         </div>
     </div>

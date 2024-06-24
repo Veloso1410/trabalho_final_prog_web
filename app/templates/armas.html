@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo de Armas</title>
+    <title>Armas VHL</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -23,7 +23,7 @@
             left: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            height: 70px; 
+            height: 70px;
         }
         .navbar img {
             height: 50px;
@@ -45,7 +45,6 @@
             margin: 150px auto 0;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.1);
-            
             border-radius: 10px;
         }
         h2 {
@@ -177,8 +176,6 @@
             width: 100%; 
             box-shadow: none; 
         }
-
-
         .hero-content {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px;
@@ -188,23 +185,54 @@
             margin-top: 70px;
             color: #ffffff;
         }
-
         .hero-content h2 {
             margin-bottom: 10px;
             font-size: 2.5em;
         }
-
         .hero-content p {
             font-size: 1.2em;
             line-height: 1.5;
         }
-        
         .logo2-container {
-            margin-right: 960px;
-            display: flex;
-            justify-content: center;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .logo2-container img {
+            height: 50px;
         }
     </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">
+            <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
+        </a>
+        <h1>V H L</h1>
+        <div class="logo2-container">
+            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
+        </div>
+        <div class="top-menu">
+            <a href="/quemsomos">Quem Somos</a>
+            <a href="/ondecomprar">Onde Comprar</a>
+            <a href="/licenca">Licença</a>
+        </div>
+    </div>
+
+    <div class="hero-container">
+        <div class="hero-content">
+            <h2>CATÁLOGO DE ARMAS</h2>
+            <p>Glock, Taurus, CZ, Beretta, Rossi, Imbel, S&W e Winchester</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Armas</h2>
+        <div class="weapon-grid"></div>
+        <a href="/adicionar" method="post" class="add-weapon">Adicionar Nova Arma</a>
+    </div>
+
     <script>
         function fetchWeapons() {
             fetch('/weapons')
@@ -217,7 +245,6 @@
                         gridItem.classList.add('weapon-item');
 
                         gridItem.innerHTML = `
-                            <img src="${weapon.image_url}" alt="${weapon.modelo}">
                             <div class="weapon-name">
                                 <strong>${weapon.modelo}</strong>, <strong>${weapon.numero_de_serie}</strong>
                                 <span class="expand-arrow">▼</span>
@@ -265,34 +292,5 @@
             fetchWeapons();
         });
     </script>
-</head>
-<body>
-    <div class="navbar">
-        <a href="/">
-            <img src="https://chilennon.home.blog/wp-content/uploads/2019/07/img_3025.png?w=616" alt="Logo">
-        </a>
-        <h1>V H L</h1>
-        <div class="logo2-container">
-            <img src="https://uploaddeimagens.com.br/images/004/802/079/full/_e698696e-b888-4d42-a59e-2a39afff0e36.jpg?1718895831" alt="Logo2">
-        </div>
-        <div class="top-menu">
-            <a href="/quemsomos">Quem Somos</a>
-            <a href="/ondecomprar">Onde Comprar</a>
-            <a href="/licenca">Licença</a>
-        </div>
-    </div>
-
-    <div class="hero-container">
-        <div class="hero-content">
-            <h2>CATÁLOGO DE ARMAS</h2>
-            <p>Glock, Taurus, CZ, Beretta, Rossi, Imbel, S&W e Winchester</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <h2>Lista de Armas</h2>
-        <div class="weapon-grid"></div>
-        <a href="/adicionar" method="post" class="add-weapon">Adicionar Nova Arma</a>
-    </div>
 </body>
 </html>

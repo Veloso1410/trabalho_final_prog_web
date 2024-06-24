@@ -1,5 +1,4 @@
-python -m venv venv
-source venv/bin/activate  # No Windows use `venv\Scripts\activate`
-pip install fastapi uvicorn sqlalchemy alembic asyncpg psycopg2
-
-INICIAR: python -m main.py
+# CREATE VENV # python -m venv venv
+# ACTIVATE VENV # venv\Scripts\activate
+# PIP INSTALL # pip install fastapi uvicorn sqlalchemy alembic asyncpg psycopg2
+# START API # INICIAR: python -m main.py

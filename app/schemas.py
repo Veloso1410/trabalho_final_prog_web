@@ -1,6 +1,7 @@
-# app/schemas.py
+# IMPORT
 from pydantic import BaseModel
 
+# CLASSES
 class WeaponBody(BaseModel):
     numero_de_serie:int
     classe:str

@@ -1,7 +1,8 @@
-# app/crud.py
+# IMPORT
 from sqlalchemy.orm import Session
 from .models import Weapon
 
+# DATABASE FUNCTIONS
 def get_weapons(db: Session):
     return db.query(Weapon).all()
 
